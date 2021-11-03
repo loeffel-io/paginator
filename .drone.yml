@@ -1,0 +1,43 @@
+kind: pipeline
+type: docker
+name: docker
+
+steps:
+  - name: ls-lint
+    image: byrnedo/alpine-curl
+    commands:
+      - curl -sL -o ls-lint https://github.com/loeffel-io/ls-lint/releases/download/v1.10.0/ls-lint-linux && chmod +x ls-lint && ./ls-lint
+
+  - name: install
+    image: golang:1.17
+    commands:
+      - make install
+    volumes:
+      - name: deps
+        path: /go
+
+  - name: linter
+    image: golangci/golangci-lint
+    commands:
+      - make linter
+    volumes:
+      - name: deps
+        path: /go
+
+  - name: test
+    image: golang:1.17
+    commands:
+      - make test-coverage
+    volumes:
+      - name: deps
+        path: /go
+
+  - name: codecov
+    image: plugins/codecov
+    settings:
+      token:
+        from_secret: CODECOV_TOKEN
+
+volumes:
+  - name: deps
+    temp: { }
