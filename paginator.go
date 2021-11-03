@@ -29,9 +29,16 @@ func (paginator *Paginator) Offset() uint64 {
 	return (paginator.Page - 1) * paginator.Limit
 }
 
-func (paginator *Paginator) SetTotal(total *uint64) {
+func (paginator *Paginator) SetTotal(total uint64) {
 	paginator.Lock()
 	defer paginator.Unlock()
 
-	paginator.Total = *total
+	paginator.Total = total
+}
+
+func (paginator *Paginator) GetTotal() uint64 {
+	paginator.RLock()
+	defer paginator.RUnlock()
+
+	return paginator.Total
 }
