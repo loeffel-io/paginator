@@ -75,7 +75,7 @@ func TestOffset(t *testing.T) {
 	}
 }
 
-func TestSetTotal(t *testing.T) {
+func TestTotal(t *testing.T) {
 	var tests = []struct {
 		paginator *Paginator
 		total     uint64
