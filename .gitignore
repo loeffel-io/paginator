@@ -17,3 +17,4 @@
 # custom
 /.idea
 .DS_Store
+coverage.txt

@@ -5,20 +5,20 @@ import (
 )
 
 type Paginator struct {
-	Page  int `gorm:"-" json:"page"`
-	Limit int `gorm:"-" json:"limit"`
-	Total int `gorm:"total" json:"total"`
+	Page  uint64 `gorm:"-" json:"page"`
+	Limit uint64 `gorm:"-" json:"limit"`
+	Total uint64 `gorm:"total" json:"total"`
 	*sync.RWMutex
 }
 
-func (paginator Paginator) GetLimit() int {
+func (paginator Paginator) GetLimit() uint64 {
 	paginator.RLock()
 	defer paginator.RUnlock()
 
 	return paginator.Limit
 }
 
-func (paginator *Paginator) Offset() int {
+func (paginator *Paginator) Offset() uint64 {
 	paginator.RLock()
 	defer paginator.RUnlock()
 
@@ -29,9 +29,9 @@ func (paginator *Paginator) Offset() int {
 	return (paginator.Page - 1) * paginator.Limit
 }
 
-func (paginator *Paginator) SetTotal(total *int64) {
+func (paginator *Paginator) SetTotal(total *uint64) {
 	paginator.Lock()
 	defer paginator.Unlock()
 
-	paginator.Total = int(*total)
+	paginator.Total = *total
 }
