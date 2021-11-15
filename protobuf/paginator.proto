@@ -1,0 +1,15 @@
+syntax = "proto3";
+package paginator;
+
+import "validate/validate.proto";
+
+message PaginatorRequest {
+  uint64 page = 1 [(validate.rules).uint64 = {gte:1}];
+  uint64 limit = 2 [(validate.rules).uint64 = {gte:1}];
+}
+
+message PaginatorResponse{
+  uint64 page = 1 [(validate.rules).uint64 = {gte:1}];
+  uint64 limit = 2 [(validate.rules).uint64 = {gte:1}];
+  uint64 total = 3;
+}
