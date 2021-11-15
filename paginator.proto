@@ -5,12 +5,7 @@ option go_package = "github.com/loeffel-software-gmbh/paginator";
 
 import "validate/validate.proto";
 
-message PaginatorRequest {
-  uint64 page = 1 [(validate.rules).uint64 = {gte:1}];
-  uint64 limit = 2 [(validate.rules).uint64 = {gte:1}];
-}
-
-message PaginatorResponse{
+message Paginator {
   uint64 page = 1 [(validate.rules).uint64 = {gte:1}];
   uint64 limit = 2 [(validate.rules).uint64 = {gte:1}];
   uint64 total = 3;
