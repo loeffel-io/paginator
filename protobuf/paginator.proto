@@ -1,5 +1,5 @@
 syntax = "proto3";
-package paginator;
+package protobuf;
 
 import "validate/validate.proto";
 
