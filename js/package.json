@@ -1,5 +1,5 @@
 {
-  "name": "@loeffel/paginator",
+  "name": "@loeffel-io/paginator",
   "version": "0.1.0",
   "license": "MIT",
   "dependencies": {

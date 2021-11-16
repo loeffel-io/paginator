@@ -1,4 +1,4 @@
-module github.com/loeffel/go-paginator/go
+module github.com/loeffel-io/paginator/go
 
 go 1.17
 

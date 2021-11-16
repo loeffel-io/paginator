@@ -4,7 +4,7 @@
 ## Table of Contents
 
 - [paginator.proto](#paginator.proto)
-    - [Paginator](#loeffel.paginator.Paginator)
+    - [Paginator](#loeffel_io.paginator.Paginator)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -17,7 +17,7 @@
 
 
 
-<a name="loeffel.paginator.Paginator"></a>
+<a name="loeffel_io.paginator.Paginator"></a>
 
 ### Paginator
 
