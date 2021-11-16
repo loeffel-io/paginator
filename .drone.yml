@@ -19,6 +19,7 @@ steps:
   - name: install
     image: golang:1.17
     commands:
+      - cd go
       - make install
     volumes:
       - name: go_dependencies
@@ -27,6 +28,7 @@ steps:
   - name: linter
     image: golangci/golangci-lint
     commands:
+      - cd go
       - make linter
     volumes:
       - name: go_dependencies
@@ -35,6 +37,7 @@ steps:
   - name: test
     image: golang:1.17
     commands:
+      - cd go
       - make test-coverage
     volumes:
       - name: go_dependencies
@@ -54,6 +57,7 @@ steps:
       GITHUB_TOKEN:
         from_secret: GITHUB_TOKEN
     commands:
+      - cd js
       - make install
 
   - name: npm
