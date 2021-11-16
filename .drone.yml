@@ -69,8 +69,8 @@ steps:
       email: lucas@loeffel.io
       folder: js
       access: public
-#    when:
-#      event: tag
+    when:
+      event: tag
 
 volumes:
   - name: go_dependencies
