@@ -28,5 +28,5 @@ go get -u github.com/loeffel/paginator/go
 ## JavaScript & TypeScript
 
 ``` 
-yarn loeffel-io/paginator 
+yarn @loeffel-io/paginator 
 ```
