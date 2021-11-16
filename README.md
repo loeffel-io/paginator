@@ -1,4 +1,6 @@
-# Löffel Software GmbH - Go Paginator
+# Paginator
 
-[![Build Status](https://ci.loeffel.io/api/badges/loeffel-software-gmbh/go-paginator/status.svg)](https://ci.loeffel.io/loeffel-software-gmbh/go-paginator)
-[![codecov](https://codecov.io/gh/loeffel-software-gmbh/go-paginator/branch/main/graph/badge.svg?token=7R6HW8MNQP)](https://codecov.io/gh/loeffel-software-gmbh/go-paginator)
+[![Build Status](https://cloud.drone.io/api/badges/loeffel/paginator/status.svg)](https://cloud.drone.io/loeffel/paginator)
+
+- Grpc support
+- Go & JavaScript support

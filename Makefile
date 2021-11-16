@@ -13,7 +13,7 @@ proto:
         --js_out=import_style=commonjs:js \
         --grpc-web_out=import_style=typescript,mode=grpcwebtext:js \
 		--doc_out=./doc \
-		--doc_opt=html,index.html \
+		--doc_opt=markdown,index.md \
         *.proto
 
 	make proto-cleanup
