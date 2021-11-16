@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: docker
+name: main
 
 steps:
   - name: ls-lint
@@ -8,12 +8,25 @@ steps:
     commands:
       - curl -sL -o ls-lint https://github.com/loeffel-io/ls-lint/releases/download/v1.10.0/ls-lint-linux && chmod +x ls-lint && ./ls-lint
 
+  - name: proto
+    image: golang:1.17
+    commands:
+      - make proto
+
+---
+kind: pipeline
+type: docker
+name: go
+depends_on:
+  - main
+
+steps:
   - name: install
     image: golang:1.17
     commands:
       - make install
     volumes:
-      - name: deps
+      - name: go_dependencies
         path: /go
 
   - name: linter
@@ -21,7 +34,7 @@ steps:
     commands:
       - make linter
     volumes:
-      - name: deps
+      - name: go_dependencies
         path: /go
 
   - name: test
@@ -29,15 +42,37 @@ steps:
     commands:
       - make test-coverage
     volumes:
-      - name: deps
+      - name: go_dependencies
         path: /go
 
-  - name: codecov
-    image: plugins/codecov
+---
+kind: pipeline
+type: docker
+name: js
+depends_on:
+  - main
+
+steps:
+  - name: install
+    image: node:16
+    environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+    commands:
+      - make install
+
+  - name: npm
+    image: plugins/npm
     settings:
-      token:
-        from_secret: CODECOV_TOKEN
+      username: loeffel-io
+      password:
+        from_secret: NPM_PASSWORD
+      email: lucas@loeffel.io
+      folder: js
+      access: public
+    when:
+      event: tag
 
 volumes:
-  - name: deps
+  - name: go_dependencies
     temp: { }

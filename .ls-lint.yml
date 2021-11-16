@@ -1,6 +1,9 @@
 ls:
   .dir: snake_case
   .go: snake_case
+  .js: snake_case
+  .ts: snake_case
+  .d.ts: snake_case
 
 ignore:
   - .git
