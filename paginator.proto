@@ -1,7 +1,7 @@
 syntax = "proto3";
 package paginator;
 
-option go_package = "github.com/loeffel-software-gmbh/go-paginator;go_paginator";
+option go_package = "github.com/loeffel-software-gmbh/go-paginator;paginator";
 
 import "validate/validate.proto";
 

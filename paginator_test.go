@@ -1,7 +1,6 @@
 package paginator
 
 import (
-	"sync"
 	"testing"
 )
 
@@ -12,15 +11,13 @@ func TestLimit(t *testing.T) {
 	}{
 		{
 			paginator: &Paginator{
-				Limit:   10,
-				RWMutex: new(sync.RWMutex),
+				Limit: 10,
 			},
 			expected: 10,
 		},
 		{
 			paginator: &Paginator{
-				Limit:   20,
-				RWMutex: new(sync.RWMutex),
+				Limit: 20,
 			},
 			expected: 20,
 		},
@@ -42,25 +39,22 @@ func TestOffset(t *testing.T) {
 	}{
 		{
 			paginator: &Paginator{
-				Page:    1,
-				Limit:   10,
-				RWMutex: new(sync.RWMutex),
+				Page:  1,
+				Limit: 10,
 			},
 			expected: 0,
 		},
 		{
 			paginator: &Paginator{
-				Page:    2,
-				Limit:   10,
-				RWMutex: new(sync.RWMutex),
+				Page:  2,
+				Limit: 10,
 			},
 			expected: 10,
 		},
 		{
 			paginator: &Paginator{
-				Page:    2,
-				Limit:   50,
-				RWMutex: new(sync.RWMutex),
+				Page:  2,
+				Limit: 50,
 			},
 			expected: 50,
 		},
@@ -82,16 +76,13 @@ func TestTotal(t *testing.T) {
 		expected  uint64
 	}{
 		{
-			paginator: &Paginator{
-				RWMutex: new(sync.RWMutex),
-			},
-			total:    10,
-			expected: 10,
+			paginator: &Paginator{},
+			total:     10,
+			expected:  10,
 		},
 		{
 			paginator: &Paginator{
-				Total:   20,
-				RWMutex: new(sync.RWMutex),
+				Total: 20,
 			},
 			total:    20,
 			expected: 20,
@@ -99,7 +90,7 @@ func TestTotal(t *testing.T) {
 	}
 
 	for i, test := range tests {
-		test.paginator.SetTotal(test.total)
+		test.paginator.Total = test.total
 		var total = test.paginator.GetTotal()
 
 		if total != test.expected {
