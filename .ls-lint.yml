@@ -4,6 +4,9 @@ ls:
   .js: snake_case
   .ts: snake_case
   .d.ts: snake_case
+  .pb.go: snake_case
+  .pb.extend.go: snake_case
+  .pb.validate.go: snake_case
 
 ignore:
   - .git
