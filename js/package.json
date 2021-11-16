@@ -1,7 +1,8 @@
 {
-  "name": "paginator",
+  "name": "@loeffel-io/paginator",
   "version": "1.11.0",
   "license": "MIT",
+  "private": false,
   "dependencies": {
     "google-protobuf": "^3.19.1"
   }
